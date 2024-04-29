@@ -319,12 +319,11 @@
                 {%- endif -%}
               }
             </script>
-            {%- else -%}
-              {%- render 'product-form', product: product -%}
-            {%- endif -%}
-          {%- endif -%}
-          {%- if downcase_product_tags contains 'available in store only' -%}
             <h1>Available In Store Only</h1>
+            {%- endif -%}
+            <div style="{%- if downcase_product_tags contains 'available in store only' -%}display: none;{%- endif -%}">
+              {%- render 'product-form', product: product -%}
+            </div>
             {%- comment -%}
             Brauz code
             {%- endcomment -%}
@@ -337,7 +336,7 @@
               data-hodv="{{ product.has_only_default_variant }}"
               style="display: none; width: 0;"
             ></div>
-            {%- endif -%}
+          {%- endif -%}
 
           {%- if section.settings.description_below_add_to_cart -%}
             <div class="ProductMeta__Description">
